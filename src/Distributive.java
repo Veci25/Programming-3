@@ -168,7 +168,6 @@ public class Distributive {
 
             return seqMM(A, B);
         }else{
-            System.out.println("DA");
             /** Createing subamtrcies to get 2x2 matrices because we use divide and conquer **/
             int[][] A11 = new int[n/2][n/2];
             int[][] A12 = new int[n/2][n/2];
