@@ -277,44 +277,44 @@ public class Distributive {
         if (rank == 1){
             int[][] M1 = multiply(add(A11, A22), add(B11, B22));
             s1 = M1;
-            int[] kopija = StraightenMatrix(s1);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s1);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 2){
             int[][] M2 = multiply(add(A21, A22), B11);
             s2 = M2;
-            int[] kopija = StraightenMatrix(s2);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s2);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 3){
             int[][] M3 = multiply(A11, subtract(B12, B22));
             s3 = M3;
-            int[] kopija = StraightenMatrix(s3);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s3);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 4){
             int[][] M4 = multiply(A22, subtract(B21, B11));
             s4 = M4;
-            int[] kopija = StraightenMatrix(s4);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s4);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 5){
             int[][] M5 = multiply(add(A11, A12), B22);
             s5 = M5;
-            int[] kopija = StraightenMatrix(s5);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s5);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 6){
             int[][] M6 = multiply(subtract(A21, A11), add(B11, B12));
             s6 = M6;
-            int[] kopija = StraightenMatrix(s6);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s6);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         if (rank == 7){
             int[][] M7 = multiply(subtract(A12, A22), add(B21, B22));
             s7 = M7;
-            int[] kopija = StraightenMatrix(s7);
-            MPI.COMM_WORLD.Send(kopija,0, m * m, MPI.INT, 0, 0);
+            int[] copyOfMatrix = StraightenMatrix(s7);
+            MPI.COMM_WORLD.Send(copyOfMatrix,0, m * m, MPI.INT, 0, 0);
         }
         MPI.COMM_WORLD.Barrier();
 
@@ -329,6 +329,7 @@ public class Distributive {
             join(C12, C, 0, n / 2);
             join(C21, C, n / 2, 0);
             join(C22, C, n / 2, n / 2);
+            System.out.println("Result Matrix: ");
             printMatrix(C,C.length,C.length);
 
         }
