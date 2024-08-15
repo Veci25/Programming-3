@@ -148,11 +148,11 @@ public class Distributive {
         System.out.println();
     }
 
-    public static void join(int[][] C, int[][] P, int iB, int jB) {
-        int n = C.length;
-        for (int i = iB; i < n + iB; i++) {
-            for (int j = jB; j < n + jB; j++) {
-                P[i][j] = C[i - iB][j - jB];
+   public static void join(int[][] C, int[][] P, int iB, int jB) {
+        int n = P.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                C[i + iB][j + jB] = P[i][j];
             }
         }
     }
